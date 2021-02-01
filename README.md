@@ -1,4 +1,8 @@
-In order to have access to the video calls, the OpenVidu application must be put in a Docker container with the following command [docker run -p 4443:4443 --rm -e OPENVIDU_SECRET=MY_SECRET openvidu/openvidu-server-kms:2.15.0]
+# Video Chat application
+## Targeted framework .NET Framework 4.7.2
+
+### Overview
+In order to have access to the video calls, the OpenVidu application must be put in a Docker container with the following command ```[docker run -p 4443:4443 --rm -e OPENVIDU_SECRET=MY_SECRET openvidu/openvidu-server-kms:2.15.0]```
 The application will work even if the OpenVidu application is not turned on but the user won't be able to have video-conference calls with the other participants in his room.
 
 SignalR is used for the real-time chat application. It is an open-source Microsoft library that allows server code to send asynchronous notifications to client-side web applications.
