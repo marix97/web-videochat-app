@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<div class="row mt-5 d-flex justify-content-center">
+        <div id="users-list" class="col-md-3 col-sm-3 border text-muted bigger-height-not-on-sm background-color-cool">
+            <div id="active-users">
+                Active users:
+                <div id="users" class="pretty-ul">
+
+
+                </div>
+            </div>
+        </div>
+    <div class="col-md-6 col-sm-6 bigger-height border">
+        <p id="global-chat-text">Chat window</p>
+
+        <div id="chatbox" data-room-name="lobby" data-user-name="@System.Web.HttpContext.Current.User.Identity.Name">
+        </div>
+        <div id="action-buttons">
+            <input id="chatbox-input-text" type="text" placeholder="Enter message... to sent a private message write /private(name-of-user) text">
+
+            <button type="button" id="chatbox-input-button"
+                    class="btn btn-sm btn-info btn-block">
+                Send
+            </button>
+            <br />
+
+            <button type="button" id="chatbox-upload-button" data-toggle="modal" data-target="#upload-modal"
+                    class="btn btn-sm btn-info btn-block">
+                Upload file
+            </button>
+
+            <button type="button" id="chatbox-video-button" data-toggle="modal" data-target="#video-modal"
+                    class="btn btn-sm btn-info btn-block">
+                Start video chat
+            </button>
+
+            <button type="button" id="chatbox-video-off-button"
+                    class="btn btn-sm btn-danger" style="display: none;">
+                End video chat
+            </button>
+        </div>
+
+    </div>
+    <div id="rooms-list" class="col-md-3 col-sm-3 border text-muted bigger-height-not-on-sm background-color-cool" class='overflow-slider'>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#room-modal">
+            Create new room
+        </button>
+        <div class="user-signout">
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+                <a class="btn btn-sm btn-danger" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            }
+        </div>
+        <div id="private-room">
+            Rooms:
+            <div id="rooms">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="session">
+    <div id="main-video" class="col-md-6"><p></p><video autoplay playsinline="true" muted></video></div>
+
+    <div id="video-container" class="col-md-6"></div>
+</div>
+
+<div class="modal fade" id="upload-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title lead">Video chat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-small text-muted text-center">
+                <form id="fileinfo" enctype="multipart/form-data" method="post" name="fileinfo">
+                    <label>File to stash:</label>
+                    <input type="file" name="file" required />
+                </form>
+                <input id="upload-file" type="button" value="Upload" />
+                <div id="output"></div>
+                <div id="result"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="video-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title lead">Video chat</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-small text-muted text-center">
+                Are you sure that you want to start a video chat with the current room?
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="start-video" class="btn btn-success">Start</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="room-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title lead">Create new room</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-small text-muted text-center">
+                Room name: <br />
+                <input type="text" id="room-name" /> 
+                <br />
+                Room password: <br />
+                <input type="text" id="room-password" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="create-room" class="btn btn-primary">Create</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--ask for password-->
+<div class="modal fade" id="join-room-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title lead">Create new room</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-small text-muted text-center">         
+                Room password: <br />
+                <input type="text" id="join-room-password" /><br />
+                <span class="text-small text-muted">Note: Lobby is available with any password (even empty)</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="join-room-button" class="btn btn-primary">Create</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <!--Script references. -->
+    <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
+    <!--Reference the SignalR library. -->
+    <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
+    <!--Reference the autogenerated SignalR hub script. -->
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/openvidu-browser-2.15.0.js"></script>
+    <script src="~/Scripts/signalr.js"></script>
+}
+
+
+

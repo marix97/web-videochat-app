@@ -1,0 +1,54 @@
+﻿@model ChatVideo.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+    <div class="lr-container register-container" align="center">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Create a new account.</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Username" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-default btn-register" value="Register" />
+                </div>
+            </div>
+        }
+
+        @Html.ActionLink("Already have an Account?", "Login", "Account")
+    </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section Styles {
+    .background-clouds {
+    background-image: url("https://www.kindpng.com/picc/m/148-1489572_transparent-chat-icon-png-transparent-background-chat-icon.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    }
+}

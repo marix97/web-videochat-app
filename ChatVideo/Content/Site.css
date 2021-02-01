@@ -1,0 +1,294 @@
+﻿html,
+body {
+    height: 100%;
+    padding: 5px 0;
+    background: #eeeeee;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 100%;
+}
+    
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 960px;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.form-control {
+    height: 40px;
+}
+
+.lr-container {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    overflow: hidden;
+}
+
+.login-container {
+    vertical-align: middle;
+    width: 350px;
+    max-height: 450px;
+    height: 430px;
+}
+
+.login-container #profile-img {
+    width: 96px;
+    height: 96px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    margin: 20px auto;
+}
+
+.login-container .btn-signin {
+    width: 100%;
+    height: 36px;
+    background: #5d8a9e;
+    color: white;
+    font-weight: bold;
+}
+
+.register-container {
+    width: 350px;
+    max-height: 600px;
+}
+
+.register-container .btn-register {
+    width: 100%;
+    height: 36px;
+    background: #5d8a9e;
+    color: white;
+    font-weight: bold;
+}
+
+.register-container input[type="radio"] {
+    display: none;
+}
+
+.validation-summary-errors ul {
+    list-style: none;
+    margin: 0 0 10px 0;
+    padding: 0;
+    text-align: center;
+}
+
+.clearfix {
+    clear: left;
+}
+
+.col-md-2 {
+    padding: 0;
+}
+
+.col-md-7 {
+    width: 61.3%;
+}
+
+.col-md-3 {
+    width: 22%;
+}
+
+span {
+    color: #ddd;
+}
+
+span:hover {
+    color: white;
+}
+
+
+.user-signout {
+    float: right;
+    width: 18px;
+}
+
+#chatbox {
+    width: 100%;
+    height: 70vh;
+    max-height: 70vh;
+    overflow-y: scroll;
+    padding: 5px;
+    background-color: #FCFADD;
+    color: #714D03;
+    border: 4px double #DEBB07;
+}
+
+.bigger-height {
+    height: 90vh;
+}
+
+#chatbox-input-text {
+    width: 100%;
+}
+
+#chatbox-input-button:hover {
+    background-color: green;
+}
+
+#chatbox-upload-button:hover {
+    background-color: red;
+}
+
+#global-chat-text {
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+
+#active-users, #private-room {
+    color: green;
+    font-weight: bold;
+}
+
+#users, #rooms {
+    color: black;
+    font-weight: normal;
+    font-family: "Folks", Times, serif;
+}
+
+.pretty-ul {
+    list-style: none;
+}
+
+.pretty-ul li::before {
+    content: "✅";
+    display: inline-block;
+    margin-right: 0.2rem;
+}
+
+#session img {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    object-fit: contain;
+    vertical-align: baseline;
+}
+
+#session #video-container img {
+    position: relative;
+    float: left;
+    width: 50%;
+    cursor: pointer;
+    object-fit: cover;
+    height: 180px;
+}
+
+#video-container video {
+    position: relative;
+    float: left;
+    width: 50%;
+    cursor: pointer;
+}
+
+#video-container div {
+    float: left;
+    width: 50%;
+    position: relative;
+    margin-left: -50%;
+}
+
+#video-container p {
+    display: inline-block;
+    background: #f8f8f8;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #777777;
+    font-weight: bold;
+    border-bottom-right-radius: 4px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+#main-video p {
+    position: absolute;
+    display: inline-block;
+    background: #f8f8f8;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 22px;
+    color: #777777;
+    font-weight: bold;
+    border-bottom-right-radius: 4px;
+}
+
+
+.flex-box-v-align {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+}
+
+.border {
+    border: 1px solid gray;
+}
+
+.chat-border {
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.background-color-cool {
+    background-color: #add8e6;
+}
+
+.bigger-height-not-on-sm {
+    height: 95vh;
+}
+
+@media only screen and (max-width: 1024px) {
+    footer {
+        display: none;
+    }
+    .bigger-height-not-on-sm {
+        height: 100%;
+    }
+}
+
+.overflow-slider {
+    overflow: scroll;
+}
+
+#rooms-list {
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+
+#users-list {
+    overflow-y: scroll !important;
+}
