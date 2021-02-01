@@ -18,4 +18,4 @@ More features:
 - Rooms are deleted automatically when the user exits them or joins another one and there's no one in that room (OnDisconnected() method should be fired for that)
 - Video calls only within the same room
 
-Client-side logic is written in signalr.js and the back-end logic that's specific about the chat is in ChatHub.cs
+Client-side logic is written in signalr.js and the back-end logic that's specific about the chat is in ChatHub.cs.
